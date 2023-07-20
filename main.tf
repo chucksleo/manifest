@@ -2,9 +2,13 @@ provider "kubernetes" {
   config_path = "~/.kube/config"  # Path to your kubeconfig file
 }
 
-resource "kubernetes_deployment" "my_deployment" {
+resource "kubernetes_manifest" "my_manifest" {
+  api_version = var.api_version
+  kind        = var.kind
+
   metadata {
-    name = var.deployment_name
+    name        = var.deployment_name
+    namespace   = var.namespace  # Use the namespace variable here
     labels      = var.labels
     annotations = var.annotations
   }
@@ -13,9 +17,7 @@ resource "kubernetes_deployment" "my_deployment" {
     replicas = var.replicas
 
     selector {
-      match_labels = {
-        app = var.deployment_name
-      }
+      match_labels = var.labels
     }
 
     template {
@@ -40,6 +42,7 @@ resource "kubernetes_deployment" "my_deployment" {
 resource "kubernetes_service" "my_service" {
   metadata {
     name        = var.service_name
+    namespace   = var.namespace  # Use the namespace variable here
     labels      = var.labels
     annotations = var.annotations
   }

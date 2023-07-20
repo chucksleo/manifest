@@ -36,8 +36,20 @@ variable "annotations" {
 }
 
 variable "namespace" {
-  description = "The namespace where the resources will be deployed"
+    description = "The namespace where the resources will be deployed"
+    type = string
+    default = "default"
+}
+
+variable "api_version" {
+  description = "The Kubernetes API version for the resources"
   type        = string
-  default     = "default"
+  default     = "apps/v1"
+}
+
+variable "kind" {
+  description = "The Kubernetes resource kind for the resources"
+  type        = string
+  default     = "Deployment"
 }
 

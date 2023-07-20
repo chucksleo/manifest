@@ -1,8 +1,10 @@
-# Kubernetes Manifest Terraform Module
+# SAIC RBAC Terraform Module
 
-This Terraform module deploys a Kubernetes Deployment and Service with customizable configurations.
+This Terraform module creates a manifest for Kubernetes within SAIC.
 
 ## Usage
+
+To use this Terraform module, create a new Terraform configuration file (e.g., main.tf) and specify the input variables in the module block.
 
 ```hcl
 module "kubernetes_manifest" {
@@ -23,6 +25,21 @@ module "kubernetes_manifest" {
   }
 }
 ```
+
+## Requirements
+
+| Name      | Version   |
+|-----------|-----------|
+| terraform | >= 0.15.5 |
+| aws       | >= 3.62   |
+
+## Resources
+
+| Name                                                                                                                     | Type     |
+|--------------------------------------------------------------------------------------------------------------------------|----------|
+| [kubernetes_manifest](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest)       | resource |
+| [kubernetes_annotations](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/annotations) | resource |
+| [kubernetes_labels](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/labels)           | resource |
 
 ## Inputs
 
