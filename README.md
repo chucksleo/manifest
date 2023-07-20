@@ -26,16 +26,16 @@ module "kubernetes_manifest" {
 
 ## Inputs
 
-| Name                  | Type         | Required  | Description                                                           | Default    |
-|-----------------------|--------------|-----------|-----------------------------------------------------------------------|------------|
-| deployment_name       | string       |    yes    | The name of the deployment                                            |            |
-| replicas              | number       |           | The number of replicas for deployment                                 |            |
-| container_image       | string       |           | The container image for deployment                                    |            |
-| container_port        | number       |           | The container port to expose                                          |            |
-| service_name          | string       |           | The name of the service                                               |            |
-| namespace             | string       |    yes    | The namespace to deploy resource                                      |  default   |
-| labels                | map          |    yes    | Standard metadata of the resource to be annoted                       |     {}     |
-| annotations           | map          |    yes    | Annotations to attach to resource                                     |     {}     |
+| Name                  | Type         | Required  | Description                                       | Default    |
+|-----------------------|--------------|-----------|---------------------------------------------------|------------|
+| deployment_name       | string       |    yes    | The name of the deployment                        |            |
+| replicas              | number       |           | The number of replicas for deployment             |            |
+| container_image       | string       |           | The container image for deployment                |            |
+| container_port        | number       |           | The container port to expose                      |            |
+| service_name          | string       |           | The name of the service                           |            |
+| namespace             | string       |    yes    | The namespace to deploy resource                  |  default   |
+| labels                | map          |    yes    | Standard metadata of the resource to be annoted   |     {}     |
+| annotations           | map          |    yes    | Annotations to attach to resource                 |     {}     |
 
 ## Outputs
 
