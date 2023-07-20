@@ -13,6 +13,14 @@ module "kubernetes_manifest" {
   container_image   = "nginx:latest"
   container_port    = 80
   service_name      = "my-service"
+  labels = {
+    app     = "my-app"
+    version = "1.0"
+  }
+  annotations = {
+    "example.com/author" = "John Doe"
+    "example.com/email"  = "john.doe@example.com"
+  }
 }
 ```
 
@@ -25,11 +33,9 @@ module "kubernetes_manifest" {
 | container_image       | string       |           | The container image for deployment                                    |            |
 | container_port        | number       |           | The container port to expose                                          |            |
 | service_name          | string       |           | The name of the service                                               |            |
-| api_version           | string       |    yes    | The apiVersion of the resource to be annotated                        |            |
-| kind                  | string       |    yes    | The kind of the resource to be annotated                              |            |
-| metadata              | map(string)  |    yes    | Standard metadata of the resource to be annoted                       |            |
-| annotations           | map(string)  |    yes    | A map of annotations to apply to the resource                         |            |
-| template_annotations  | map(string)  |    yes    | A mao of annotations to apply to the pod template within the resource |            |
+| namespace             | string       |    yes    | The namespace to deploy resource                                      |  default   |
+| labels                | map          |    yes    | Standard metadata of the resource to be annoted                       |     {}     |
+| annotations           | map          |    yes    | Annotations to attach to resource                                     |     {}     |
 
 ## Outputs
 

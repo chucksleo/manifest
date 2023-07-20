@@ -22,3 +22,15 @@ variable "service_name" {
   description = "The name of the service"
   type        = string
 }
+
+variable "labels" {
+  description = "Labels to attach to resources"
+  type        = map(string)
+  default     = {}
+}
+
+variable "annotations" {
+  description = "Annotations to attach to resources"
+  type        = map(string)
+  default     = {}
+}
