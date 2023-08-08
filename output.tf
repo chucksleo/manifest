@@ -1,9 +1,13 @@
-output "deployment_name" {
-  description = "The name of the deployed deployment"
-  value       = kubernetes_deployment.my_deployment.metadata[0].name
-}
+# output "deployment_name" {
+#   description = "The name of the deployed deployment"
+#   value       = kubernetes_deployment.my_deployment.metadata[0].name
+# }
 
-output "service_name" {
-  description = "The name of the deployed service"
-  value       = kubernetes_service.my_service.metadata[0].name
+# output "service_name" {
+#   description = "The name of the deployed service"
+#   value       = kubernetes_service.my_service.metadata[0].name
+# }
+output "created_configmap_metadata" {
+  description = "Metadata of the created ConfigMap resource."
+  value       = kubernetes_manifest.test-configmap.metadata
 }
