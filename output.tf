@@ -11,3 +11,19 @@ output "created_kubernetes_metadata" {
   description = "Metadata of the created ConfigMap resource."
   value       = kubernetes_manifest.my_manifest
 }
+# advanced_example/output.tf
+
+output "configmap_name" {
+  description = "The name of the created ConfigMap."
+  value       = module.advanced_example.configmap_name
+}
+
+output "configmap_namespace" {
+  description = "The namespace of the created ConfigMap."
+  value       = module.advanced_example.configmap_namespace
+}
+
+output "configmap_data" {
+  description = "The data of the created ConfigMap."
+  value       = module.advanced_example.configmap_data
+}

@@ -1,4 +1,5 @@
 # SAIC RBAC Terraform Module
+# Advanced Example Kubernetes Resources Child Module
 
 This Terraform module creates a manifest for Kubernetes within SAIC.
 
@@ -7,20 +8,19 @@ This Terraform module creates a manifest for Kubernetes within SAIC.
 To use this Terraform module, create a new Terraform configuration file (e.g., main.tf) and specify the input variables in the module block.
 
 ```hcl
-module "test_configmap" {
-  source = "./modules/kubernetes_manifest_module"
-
-  configmap_manifest = {
-    apiVersion = "v1"
-    kind       = "ConfigMap"
-    metadata = {
-      name      = "custom-config"
-      namespace = "my-namespace"
-    }
-    data = {
-      foo = "baz"
-      bar = "qux"
-    }
+module "advanced_example" {
+  source = "../.."
+  
+  apiVersion = "v1"
+  kind       = "ConfigMap"
+  metadata = {
+    name      = "test-config"
+    namespace = "default"
+  }
+  name      = "test-config"
+  namespace = "default"
+  data = {
+    foo = "bar"
   }
 }
 ```
@@ -41,15 +41,20 @@ module "test_configmap" {
 
 ## Inputs
 
-| Name                     | Type      | Required  | Description                 | Default    |
-|--------------------------|-----------|-----------|-----------------------------|------------|
-| configmap_manifest       | map(any)  |    yes    | The name of the deployment  |            |
-
+| Name       |   Type      | Required | Description                                  | Default        |
+|------------|-------------|----------|----------------------------------------------|----------------|
+| apiVersion | map(string) |   yes    | The API version of the Kubernetes resource   |
+| kind       | map(string) |   no     | The kind of the Kubernetes resource.         |
+| metadata   | map(string) |   yes    | The metadata of the kubernetes resoure.      |
+| name       | map(string) |   yes    | The name of the Kubernetes resource.         |
+| namespace  | map(string) |   no     | The namespace of the Kubernetes resource     |
+| data       | map(string) |   no     | The data of the Kubernetes resource.         |
 
 ## Outputs
 
-| Name                        | Description                                  |
-|-----------------------------|----------------------------------------------|
-| created_configmap_metadata  |  Metadata of the created ConfigMap resource. |
-
+| Name                 | Description                              |
+|----------------------|------------------------------------------|
+| configmap_name       | The name of the created ConfigMap.       |
+| configmap_namespace  | The namespace of the created ConfigMap.  |
+| configmap_data       | The data of the created ConfigMap.       |
 

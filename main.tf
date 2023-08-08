@@ -8,14 +8,6 @@
 #     labels      = var.labels
 #     annotations = var.annotations
 #   }
-
-#   spec {
-#     replicas = var.replicas
-
-#     selector {
-#       match_labels = var.labels
-#     }
-
 #     template {
 #       metadata {
 #         labels      = var.labels
@@ -77,6 +69,8 @@
 #     "owner" = "myteam"
 #   }
 # }
+
+# main.tf
 resource "kubernetes_manifest" "my_manifest" {
   manifest = {
     apiVersion = var.apiVersion
