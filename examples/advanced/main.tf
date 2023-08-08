@@ -1,6 +1,12 @@
 module "advanced_example" {
   source = "../.."
 
-  manifest = var.configmap_manifest
+  apiVersion = var.apiVersion
+  kind = var.kind
+  metadata = var.metadata
+  name = var.name
+  namespace = var.namespace
+
+  data = var.data
 
 }
