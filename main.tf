@@ -56,17 +56,7 @@
 #     type = "ClusterIP"
 #   }
 # }
-resource "configmap_manifest" "test-configmap" {
-  manifest = {
-    "apiVersion" = "v1"
-    "kind"       = "ConfigMap"
-    "metadata" = {
-      "name"      = "test-config"
-      "namespace" = "default"
-    }
-    data = var.data
-  }
-}
+
 # resource "kubernetes_labels" "example" {
 #   api_version = "v1"
 #   kind        = "ConfigMap"
@@ -87,3 +77,19 @@ resource "configmap_manifest" "test-configmap" {
 #     "owner" = "myteam"
 #   }
 # }
+resource "kubernetes_manifest" "my_manifest" {
+  manifest = {
+    apiVersion = var.apiVersion
+    kind = var.kind
+    metadata = var.metadata
+    name = var.name
+    namespace = var.namespace
+    # "apiVersion" = "v1"
+    # "kind"       = "ConfigMap"
+    # "metadata" = {
+    #   "name"      = "test-config"
+    #   "namespace" = "default"
+    # }
+    data = var.data
+  }
+}

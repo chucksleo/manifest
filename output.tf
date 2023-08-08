@@ -7,7 +7,7 @@
 #   description = "The name of the deployed service"
 #   value       = kubernetes_service.my_service.metadata[0].name
 # }
-output "created_configmap_metadata" {
+output "created_kubernetes_metadata" {
   description = "Metadata of the created ConfigMap resource."
-  value       = kubernetes_manifest.test-configmap.metadata
+  value       = kubernetes_manifest.my_manifest
 }

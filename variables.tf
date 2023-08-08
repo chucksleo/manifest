@@ -1,53 +1,47 @@
-# variable "deployment_name" {
-#   description = "The name of the deployment"
-#   type        = string
-# }
+# variables.tf
 
-# variable "replicas" {
-#   description = "The number of replicas for the deployment"
-#   type        = number
-# }
+variable "apiVersion" {
+  type        = string
+  description = "The API version of the Kubernetes resource."
+  default     = "v1"
+}
 
-# variable "container_image" {
-#   description = "The container image for the deployment"
-#   type        = string
-# }
+variable "kind" {
+  type        = string
+  description = "The kind of the Kubernetes resource."
+  default     = "ConfigMap"
+}
 
-# variable "container_port" {
-#   description = "The container port to expose"
-#   type        = number
-# }
+variable "metadata" {
+  type        = map(any)
+  description = "The metadata for the Kubernetes resource."
+  default = {
+    name      = "test-config"
+    namespace = "default"
+  }
+}
 
-# variable "service_name" {
-#   description = "The name of the service"
-#   type        = string
-# }
+variable "name" {
+  type        = string
+  description = "The name of the Kubernetes resource."
+  default     = "test-config"
+}
 
-# variable "labels" {
-#   description = "Labels to attach to resources"
-#   type        = map(string)
-#   default     = {}
-# }
+variable "namespace" {
+  type        = string
+  description = "The namespace of the Kubernetes resource."
+  default     = "default"
+}
 
-# variable "annotations" {
-#   description = "Annotations to attach to resources"
-#   type        = map(string)
-#   default     = {}
-# }
+variable "data" {
+  type        = map(string)
+  description = "The data for the ConfigMap."
+  default = {
+    foo = "bar"
+  }
+}
 
-# variable "namespace" {
-#     description = "The namespace where the resources will be deployed"
-#     type = string
-#     default = "default"
-# }
-
-# variable "api_version" {
-#   description = "The Kubernetes API version for the resources"
-#   type        = string
-#   default     = "apps/v1"
-# }
-
-variable "configmap_manifest" {
+variable "kubernetes_manifest" {
   type        = map(any)
   description = "The Kubernetes manifest object for the ConfigMap resource."
   default = {}
@@ -59,8 +53,5 @@ variable "configmap_manifest" {
   #     "namespace" = "default"
   #   }
 }
-variable "data" {
-  description = "A map of key-value pairs that will be stored in the manifest"
-  type        = map(string)
-  default     = {}
-}
+
+
