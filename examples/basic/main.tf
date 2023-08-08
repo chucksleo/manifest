@@ -1,9 +1,5 @@
-provider "kubernetes" {
-  # Configure the necessary Kubernetes provider settings here.
-}
-
-module "test_configmap" {
-  source = "./kubernetes_configmap_module"
+module "basic_example" {
+  source = "../.."
 
   configmap_manifest = {
     apiVersion = "v1"

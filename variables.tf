@@ -47,25 +47,20 @@
 #   default     = "apps/v1"
 # }
 
-# variable "kind" {
-#   description = "The Kubernetes resource kind for the resources"
-#   type        = string
-#   default     = "Deployment"
-# }
-
 variable "configmap_manifest" {
   type        = map(any)
   description = "The Kubernetes manifest object for the ConfigMap resource."
-  default = {
-    "apiVersion" = "v1"
-    "kind"       = "ConfigMap"
-    "metadata" = {
-      "name"      = "test-config"
-      "namespace" = "default"
-    }
-    "data" = {
-      "foo" = "bar"
-    }
-  }
+  default = {}
+  # default = {
+  #   "apiVersion" = "v1"
+  #   "kind"       = "ConfigMap"
+  #   "metadata" = {
+  #     "name"      = "test-config"
+  #     "namespace" = "default"
+  #   }
 }
-
+variable "data" {
+  description = "A map of key-value pairs that will be stored in the manifest"
+  type        = map(string)
+  default     = {}
+}

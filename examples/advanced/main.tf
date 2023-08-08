@@ -1,9 +1,5 @@
-provider "kubernetes" {
-  # Configure the necessary Kubernetes provider settings here.
-}
-
-module "test_configmap" {
-  source = "./kubernetes_configmap_module"
+module "advanced_example" {
+  source = "../.."
 
   manifest = var.configmap_manifest
 
